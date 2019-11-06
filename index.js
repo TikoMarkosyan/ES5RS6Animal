@@ -96,7 +96,7 @@ eliphant.brainpr();
 eliphant.warm();
 console.log(eliphant);
 //Trasport
-/*
+
 function Trasport(name) {
   this.name = name;
 }
@@ -116,4 +116,3 @@ Car.prototype.moving = function () {
 let car = new Car('bmw',300);
 console.log(car);
 car.moving();
-*/
