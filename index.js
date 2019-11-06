@@ -50,12 +50,13 @@ elephant.brainpr();
 elephant.warm();
 console.log(elephant);
 //ES5
+
 function Animal2(brain,instinct) {
     this.brain = brain;
     this.instinct = instinct;
 }
 Animal2.prototype.die = function () {
-    console.log("dead");
+    console.log("dead " + this.name);
 }
 Animal2.prototype.brainpr = function () {
     console.log(this.brain);
@@ -82,11 +83,11 @@ Elephant2.prototype.constructor = Elephant2;
 
 Elephant2.prototype.drinkmilk = function () {
   console.log(`${this.name } is `);
-  Mammal2.prototype.drinkmilk();
+  Object.getPrototypeOf(Elephant2.prototype).drinkmilk.call();
 }
 Elephant2.prototype.die = function () {
     console.log(`${this.name} is ${this.age} is`);
-    Animal2.prototype.die();
+    Object.getPrototypeOf(Elephant2.prototype).die.call(this);
 }
 let eliphant = new Elephant2("Jumbo",56,false,false,false,false);
 eliphant.drinkmilk();
@@ -94,3 +95,25 @@ eliphant.die();
 eliphant.brainpr();
 eliphant.warm();
 console.log(eliphant);
+//Trasport
+/*
+function Trasport(name) {
+  this.name = name;
+}
+Trasport.prototype.moving = function () {
+   console.log(`${this.name} is moving`)
+}
+function Car(name,speed) {
+  Trasport.call(this,name);
+  this.speed = speed;
+}
+Car.prototype = Object.create(Trasport.prototype);
+Car.prototype.constructor = Car;
+Car.prototype.moving = function () {
+     console.log(`my speed is ${this.speed}`);
+     Object.getPrototypeOf(Car.prototype).moving.call(this);
+}
+let car = new Car('bmw',300);
+console.log(car);
+car.moving();
+*/
